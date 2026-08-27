@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gyanu Educational Portal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #1e3a8a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-weight: bold;
+            margin: 0 12px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #1e3a8a;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 30px 20px 70px;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>GYANU</h1>
+        <p>Educational & Question Paper Portal</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Question Papers</a>
+        <a href="#">Notices</a>
+        <a href="#">Results</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <section class="hero">
+
+        <h2>Welcome to Gyanu</h2>
+
+        <p>
+            Your educational information and question paper portal.
+        </p>
+
+        <a href="#" class="button">
+            Explore Question Papers
+        </a>
+
+    </section>
+
+    <section class="cards">
+
+        <div class="card">
+            <div style="font-size:40px;">📚</div>
+
+            <h3>Question Papers</h3>
+
+            <p>
+                Find and access educational question papers easily.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div style="font-size:40px;">📢</div>
+
+            <h3>Notices</h3>
+
+            <p>
+                Get the latest educational notices and updates.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div style="font-size:40px;">📊</div>
+
+            <h3>Results</h3>
+
+            <p>
+                Check student results and academic information.
+            </p>
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>© 2026 Gyanu Educational Portal</p>
+
+    </footer>
+
+</body>
+</html>
