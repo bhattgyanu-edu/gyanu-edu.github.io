@@ -5,11 +5,15 @@
 const API_URL =
 "https://script.google.com/macros/s/AKfycbwEyK-QdoMfsqSpYbc4SSSL6bDdcmxx-cRlDeC1CFihlv8hz7qqM1rikOzhc-F4NbKeNw/exec";
 
-
 async function loadQuestionPapers() {
 
     const paperList =
         document.getElementById("paperList");
+
+    if (!paperList) {
+        console.log("paperList element not found");
+        return;
+    }
 
     paperList.innerHTML =
         "<p>Loading question papers...</p>";
@@ -19,10 +23,18 @@ async function loadQuestionPapers() {
         const response =
             await fetch(API_URL);
 
+        if (!response.ok) {
+            throw new Error(
+                "API response error: " + response.status
+            );
+        }
+
         const data =
             await response.json();
 
-        if (!data || data.length < 2) {
+        console.log("Question paper data:", data);
+
+        if (!Array.isArray(data) || data.length < 2) {
 
             paperList.innerHTML =
                 "<p>No question papers found.</p>";
@@ -30,112 +42,67 @@ async function loadQuestionPapers() {
             return;
         }
 
-        const headers = data[0];
-
         const rows = data.slice(1);
 
         paperList.innerHTML = "";
 
         rows.forEach(function(row) {
 
-            const id =
-                row[0] || "";
-
-            const title =
-                row[1] || "Untitled Paper";
-
-            const subject =
-                row[2] || "";
-
-            const category =
-                row[3] || "";
-
-            const level =
-                row[4] || "";
-
-            const year =
-                row[5] || "";
-
-            const link =
-                row[6] || "#";
-
+            const id = row[0] || "";
+            const title = row[1] || "Untitled Paper";
+            const subject = row[2] || "";
+            const category = row[3] || "";
+            const level = row[4] || "";
+            const year = row[5] || "";
+            const link = row[6] || "";
 
             const card =
                 document.createElement("div");
 
-            card.className =
-                "paper-card";
-
+            card.className = "paper-card";
 
             card.innerHTML = `
-
                 <h3>📄 ${title}</h3>
 
-                <div class="paper-info">
-
-                    ID: ${id}<br>
-
-                    Subject: ${subject}<br>
-
-                    Category: ${category}<br>
-
-                    Level: ${level}<br>
-
-                    Year: ${year}
-
-                </div>
+                <p>ID: ${id}</p>
+                <p>Subject: ${subject}</p>
+                <p>Category: ${category}</p>
+                <p>Level: ${level}</p>
+                <p>Year: ${year}</p>
 
                 ${
-                    link && link !== "#"
-
+                    link
                     ?
-
-                    `<a
-                        href="${link}"
+                    `<a href="${link}"
                         target="_blank"
-                        class="paper-btn"
-                    >
+                        rel="noopener"
+                        class="paper-btn">
                         📄 View / Download
                     </a>`
-
                     :
-
-                    `<span>
-                        PDF link not available
-                    </span>`
+                    `<p>PDF link not available</p>`
                 }
-
             `;
 
             paperList.appendChild(card);
 
         });
 
-
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Question paper API error:",
+            error
+        );
 
         paperList.innerHTML = `
-
             <div class="paper-card">
-
                 <h3>⚠️ Unable to load papers</h3>
-
-                <p>
-                    Please try again later.
-                </p>
-
+                <p>Please try again later.</p>
             </div>
-
         `;
-
     }
-
 }
-
-
-// Load papers when website opens
 
 document.addEventListener(
     "DOMContentLoaded",
