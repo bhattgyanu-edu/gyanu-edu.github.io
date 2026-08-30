@@ -1,199 +1,1452 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GYANU | Educational & Information Portal</title>
 
-    <title>Gyanu Educational Portal</title>
+<meta name="description"
+content="GYANU Educational and Information Portal - Educational resources, question papers, blogs, notices and information.">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #222;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
-        header {
-            background: #1e3a8a;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+:root{
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+    --dark:#0f172a;
+    --text:#334155;
+    --light:#f8fafc;
+    --white:#ffffff;
+    --border:#e2e8f0;
+    --card:#ffffff;
+}
 
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--light);
+    color:var(--text);
+    line-height:1.6;
+}
 
-        header p {
-            font-size: 16px;
-        }
+body.dark{
+    --dark:#020617;
+    --text:#cbd5e1;
+    --light:#0f172a;
+    --white:#111827;
+    --border:#334155;
+    --card:#1e293b;
+}
 
-        nav {
-            background: white;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+/* =========================
+   NAVBAR
+========================= */
 
-        nav a {
-            text-decoration: none;
-            color: #1e3a8a;
-            font-weight: bold;
-            margin: 0 12px;
-        }
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+}
 
-        .hero {
-            text-align: center;
-            padding: 70px 20px;
-        }
+body.dark header{
+    background:rgba(15,23,42,0.95);
+}
 
-        .hero h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-        .hero p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 30px;
-        }
+.logo{
+    font-size:26px;
+    font-weight:800;
+    color:var(--primary);
+}
 
-        .button {
-            display: inline-block;
-            background: #1e3a8a;
-            color: white;
-            padding: 13px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.logo span{
+    color:var(--secondary);
+}
 
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 30px 20px 70px;
-        }
+nav{
+    display:flex;
+    gap:22px;
+    align-items:center;
+}
 
-        .card {
-            background: white;
-            width: 250px;
-            padding: 30px 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
+nav a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:600;
+}
 
-        .card h3 {
-            margin: 15px 0 10px;
-        }
+nav a:hover{
+    color:var(--primary);
+}
 
-        .card p {
-            color: #666;
-            line-height: 1.5;
-        }
+.menu-btn{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
 
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
+.theme-btn{
+    border:none;
+    background:var(--primary);
+    color:white;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+}
 
-        @media (max-width: 600px) {
+/* =========================
+   HERO
+========================= */
 
-            .hero h2 {
-                font-size: 28px;
-            }
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    background:
+    radial-gradient(circle at top right,#dbeafe,transparent 40%),
+    radial-gradient(circle at bottom left,#ede9fe,transparent 40%),
+    var(--light);
+}
 
-            nav a {
-                display: inline-block;
-                margin: 7px;
-            }
-        }
-    </style>
+.hero-container{
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:60px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:8px 15px;
+    border-radius:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:55px;
+    line-height:1.1;
+    color:var(--dark);
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:var(--primary);
+}
+
+.hero p{
+    font-size:19px;
+    margin-bottom:30px;
+    max-width:650px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:white;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    border:2px solid var(--primary);
+    color:var(--primary);
+}
+
+.btn-outline:hover{
+    background:var(--primary);
+    color:white;
+}
+
+.hero-image{
+    display:flex;
+    justify-content:center;
+}
+
+.profile-image{
+    width:330px;
+    height:330px;
+    object-fit:cover;
+    border-radius:50%;
+    border:8px solid white;
+    box-shadow:0 20px 60px rgba(37,99,235,.25);
+}
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+section{
+    padding:90px 20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:38px;
+    color:var(--dark);
+    margin-bottom:10px;
+}
+
+.section-title p{
+    max-width:650px;
+    margin:auto;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-box{
+    background:var(--card);
+    padding:35px;
+    border-radius:20px;
+    border:1px solid var(--border);
+}
+
+.about-box h3{
+    font-size:27px;
+    color:var(--dark);
+    margin-bottom:15px;
+}
+
+.info-list{
+    margin-top:20px;
+}
+
+.info-list p{
+    margin:10px 0;
+}
+
+.info-list strong{
+    color:var(--primary);
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:30px;
+    border-radius:18px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:var(--dark);
+    margin-bottom:10px;
+}
+
+/* =========================
+   QUESTION PAPERS
+========================= */
+
+.question-search{
+    max-width:700px;
+    margin:0 auto 40px;
+    display:flex;
+}
+
+.question-search input{
+    flex:1;
+    padding:16px;
+    border:1px solid var(--border);
+    border-radius:10px 0 0 10px;
+    font-size:16px;
+    background:var(--card);
+    color:var(--text);
+}
+
+.question-search button{
+    padding:0 25px;
+    border:none;
+    background:var(--primary);
+    color:white;
+    border-radius:0 10px 10px 0;
+    cursor:pointer;
+}
+
+.paper-card{
+    background:var(--card);
+    padding:25px;
+    border:1px solid var(--border);
+    border-radius:15px;
+}
+
+.paper-card h3{
+    color:var(--dark);
+    margin-bottom:8px;
+}
+
+.paper-info{
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+.paper-btn{
+    display:inline-block;
+    background:var(--primary);
+    color:white;
+    padding:9px 16px;
+    border-radius:7px;
+    text-decoration:none;
+}
+
+/* =========================
+   BLOG
+========================= */
+
+.blog-card{
+    overflow:hidden;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+}
+
+.blog-image{
+    height:180px;
+    width:100%;
+    object-fit:cover;
+}
+
+.blog-content{
+    padding:25px;
+}
+
+.blog-content h3{
+    color:var(--dark);
+    margin-bottom:10px;
+}
+
+.blog-date{
+    font-size:13px;
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+    padding:20px;
+    background:var(--card);
+    border-left:5px solid var(--primary);
+    margin-bottom:15px;
+    border-radius:10px;
+}
+
+.notice-date{
+    background:var(--primary);
+    color:white;
+    padding:8px 12px;
+    border-radius:8px;
+    white-space:nowrap;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.contact-box{
+    background:var(--card);
+    padding:35px;
+    border-radius:18px;
+    border:1px solid var(--border);
+}
+
+.contact-box input,
+.contact-box textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:var(--light);
+    color:var(--text);
+}
+
+.contact-box textarea{
+    height:130px;
+    resize:none;
+}
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.social a{
+    width:45px;
+    height:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#020617;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.footer-logo{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.footer-links{
+    margin:20px 0;
+}
+
+.footer-links a{
+    color:white;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+#topBtn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    cursor:pointer;
+    display:none;
+    font-size:20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    nav{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:var(--card);
+        flex-direction:column;
+        padding:25px;
+        border-bottom:1px solid var(--border);
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .hero-image{
+        order:-1;
+    }
+
+    .profile-image{
+        width:240px;
+        height:240px;
+    }
+
+    .about-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>GYANU</h1>
-        <p>Educational & Question Paper Portal</p>
-    </header>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Question Papers</a>
-        <a href="#">Notices</a>
-        <a href="#">Results</a>
-        <a href="#">Contact</a>
-    </nav>
+<header>
 
-    <section class="hero">
+<div class="navbar">
 
-        <h2>Welcome to Gyanu</h2>
+<div class="logo">
+GYANU<span>.</span>
+</div>
 
-        <p>
-            Your educational information and question paper portal.
-        </p>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-        <a href="#" class="button">
-            Explore Question Papers
-        </a>
+<nav id="navMenu">
 
-    </section>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#papers">Question Papers</a>
+<a href="#blogs">Blogs</a>
+<a href="#notices">Notices</a>
+<a href="#contact">Contact</a>
 
-    <section class="cards">
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
 
-        <div class="card">
-            <div style="font-size:40px;">📚</div>
+</nav>
 
-            <h3>Question Papers</h3>
+</div>
 
-            <p>
-                Find and access educational question papers easily.
-            </p>
-        </div>
+</header>
 
 
-        <div class="card">
-            <div style="font-size:40px;">📢</div>
+<!-- =========================
+     HOME
+========================= -->
 
-            <h3>Notices</h3>
+<section class="hero" id="home">
 
-            <p>
-                Get the latest educational notices and updates.
-            </p>
-        </div>
+<div class="hero-container">
+
+<div>
+
+<div class="badge">
+🎓 Educational & Information Portal
+</div>
+
+<h1>
+Welcome to <span>GYANU</span>
+</h1>
+
+<p>
+Your trusted platform for educational resources,
+question papers, useful information, blogs,
+notices and learning materials.
+</p>
+
+<div class="buttons">
+
+<a href="#papers" class="btn btn-primary">
+📚 Explore Question Papers
+</a>
+
+<a href="#about" class="btn btn-outline">
+👤 About Me
+</a>
+
+</div>
+
+</div>
 
 
-        <div class="card">
-            <div style="font-size:40px;">📊</div>
+<div class="hero-image">
 
-            <h3>Results</h3>
+<!--
+YOUR PHOTO:
+Upload your photo to GitHub inside:
+assets/profile.jpg
 
-            <p>
-                Check student results and academic information.
-            </p>
-        </div>
+Then keep this path:
+assets/profile.jpg
+-->
 
-    </section>
+<img
+src="assets/profile.jpg"
+alt="Gyanu Profile"
+class="profile-image"
+onerror="this.src='https://via.placeholder.com/330?text=YOUR+PHOTO'"
+>
+
+</div>
+
+</div>
+
+</section>
 
 
-    <footer>
+<!-- =========================
+     ABOUT ME
+========================= -->
 
-        <p>© 2026 Gyanu Educational Portal</p>
+<section id="about">
 
-    </footer>
+<div class="container">
+
+<div class="section-title">
+
+<h2>About Me</h2>
+
+<p>
+A short introduction about myself and my work.
+</p>
+
+</div>
+
+
+<div class="about-grid">
+
+<div class="about-box">
+
+<h3>Hello, I'm GYANU 👋</h3>
+
+<p>
+Welcome to my personal educational and information portal.
+This website is created to share useful educational resources,
+question papers, learning materials, information and articles.
+</p>
+
+<p style="margin-top:15px;">
+I believe that knowledge becomes more valuable
+when it is shared with others.
+</p>
+
+</div>
+
+
+<div class="about-box">
+
+<h3>My Information</h3>
+
+<div class="info-list">
+
+<p>
+<strong>Full Name:</strong>
+YOUR FULL NAME
+</p>
+
+<p>
+<strong>Location:</strong>
+Nepal
+</p>
+
+<p>
+<strong>Profession:</strong>
+YOUR PROFESSION
+</p>
+
+<p>
+<strong>Email:</strong>
+your@email.com
+</p>
+
+<p>
+<strong>Website:</strong>
+gyanu-edu.github.io
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES / FEATURES
+========================= -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>What You Can Find Here</h2>
+
+<p>
+Useful resources and services available on GYANU.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">📚</div>
+
+<h3>Question Papers</h3>
+
+<p>
+Find mock tests, practice papers and
+educational question papers.
+</p>
+
+<a href="#papers" class="btn btn-primary">
+View Papers
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📝</div>
+
+<h3>Educational Blogs</h3>
+
+<p>
+Read educational articles, tutorials,
+ideas and useful information.
+</p>
+
+<a href="#blogs" class="btn btn-primary">
+Read Blogs
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📢</div>
+
+<h3>Latest Notices</h3>
+
+<p>
+Important announcements and educational
+notices in one place.
+</p>
+
+<a href="#notices" class="btn btn-primary">
+View Notices
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🎓</div>
+
+<h3>Learning Resources</h3>
+
+<p>
+Useful learning materials and resources
+for students.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">💻</div>
+
+<h3>Computer</h3>
+
+<p>
+Computer, coding, technology and
+digital learning resources.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌐</div>
+
+<h3>Information</h3>
+
+<p>
+Useful information, updates and
+educational opportunities.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     QUESTION PAPERS
+========================= -->
+
+<section id="papers">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📚 Question Papers</h2>
+
+<p>
+Search and access available question papers.
+</p>
+
+</div>
+
+
+<div class="question-search">
+
+<input
+type="text"
+id="paperSearch"
+placeholder="Search question papers..."
+onkeyup="filterPapers()"
+>
+
+<button onclick="filterPapers()">
+Search
+</button>
+
+</div>
+
+
+<div class="cards" id="paperList">
+
+
+<div class="paper-card">
+
+<h3>💻 Computer Mock Test</h3>
+
+<div class="paper-info">
+
+Subject: Computer<br>
+Level: Pre-Basic<br>
+Year: 2026
+
+</div>
+
+<a
+href="#"
+class="paper-btn"
+onclick="alert('Google Sheet PDF system will be connected here.')"
+>
+📄 View Paper
+</a>
+
+</div>
+
+
+<div class="paper-card">
+
+<h3>💻 Computer Basic Mock Test</h3>
+
+<div class="paper-info">
+
+Subject: Computer<br>
+Level: Basic<br>
+Year: 2026
+
+</div>
+
+<a
+href="#"
+class="paper-btn"
+onclick="alert('Google Sheet PDF system will be connected here.')"
+>
+📄 View Paper
+</a>
+
+</div>
+
+
+<div class="paper-card">
+
+<h3>💻 Computer Advanced Test</h3>
+
+<div class="paper-info">
+
+Subject: Computer<br>
+Level: Advanced<br>
+Year: 2026
+
+</div>
+
+<a
+href="#"
+class="paper-btn"
+onclick="alert('Google Sheet PDF system will be connected here.')"
+>
+📄 View Paper
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     BLOGS
+========================= -->
+
+<section id="blogs">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📝 Latest Blogs</h2>
+
+<p>
+Articles, educational ideas and useful information.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="blog-card">
+
+<img
+src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80"
+class="blog-image"
+alt="Education"
+>
+
+<div class="blog-content">
+
+<div class="blog-date">
+August 2026
+</div>
+
+<h3>
+How to Improve Your Learning
+</h3>
+
+<p>
+Useful strategies and ideas for improving
+your learning and study habits.
+</p>
+
+<a href="#" class="btn btn-primary">
+Read More
+</a>
+
+</div>
+
+</div>
+
+
+<div class="blog-card">
+
+<img
+src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+class="blog-image"
+alt="Technology"
+>
+
+<div class="blog-content">
+
+<div class="blog-date">
+August 2026
+</div>
+
+<h3>
+Technology and Education
+</h3>
+
+<p>
+How modern technology can help students
+learn better and faster.
+</p>
+
+<a href="#" class="btn btn-primary">
+Read More
+</a>
+
+</div>
+
+</div>
+
+
+<div class="blog-card">
+
+<img
+src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80"
+class="blog-image"
+alt="Books"
+>
+
+<div class="blog-content">
+
+<div class="blog-date">
+August 2026
+</div>
+
+<h3>
+Why Question Papers Matter
+</h3>
+
+<p>
+Practice question papers can help students
+understand exam patterns.
+</p>
+
+<a href="#" class="btn btn-primary">
+Read More
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     NOTICES
+========================= -->
+
+<section id="notices">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📢 Latest Notices</h2>
+
+<p>
+Important announcements and updates.
+</p>
+
+</div>
+
+
+<div class="notice">
+
+<div class="notice-date">
+30 Aug
+</div>
+
+<div>
+
+<h3>Welcome to GYANU Educational Portal</h3>
+
+<p>
+Our educational portal is currently being developed
+with more useful resources coming soon.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="notice">
+
+<div class="notice-date">
+2026
+</div>
+
+<div>
+
+<h3>New Question Papers</h3>
+
+<p>
+New question papers and learning materials
+will be added regularly.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>📞 Contact Me</h2>
+
+<p>
+Have a question, suggestion or collaboration idea?
+Get in touch with me.
+</p>
+
+</div>
+
+
+<div class="contact-grid">
+
+
+<div class="contact-box">
+
+<h3>Let's Connect 🤝</h3>
+
+<p style="margin-top:15px;">
+I welcome educational ideas, suggestions,
+collaborations and feedback.
+</p>
+
+<div class="info-list">
+
+<p>
+📧 <strong>Email:</strong>
+your@email.com
+</p>
+
+<p>
+📍 <strong>Location:</strong>
+Nepal
+</p>
+
+</div>
+
+
+<div class="social">
+
+<a href="#" title="Facebook">f</a>
+
+<a href="#" title="YouTube">▶</a>
+
+<a href="#" title="TikTok">♪</a>
+
+<a href="#" title="Email">@</a>
+
+</div>
+
+</div>
+
+
+<div class="contact-box">
+
+<h3>Send a Message</h3>
+
+<form onsubmit="sendMessage(event)">
+
+<input
+type="text"
+placeholder="Your Name"
+required
+>
+
+<input
+type="email"
+placeholder="Your Email"
+required
+>
+
+<textarea
+placeholder="Your Message"
+required
+></textarea>
+
+<button
+type="submit"
+class="btn btn-primary"
+>
+Send Message
+</button>
+
+</form>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="footer-logo">
+GYANU
+</div>
+
+<p>
+Educational & Information Portal
+</p>
+
+<div class="footer-links">
+
+<a href="#home">Home</a>
+
+<a href="#about">About</a>
+
+<a href="#papers">Question Papers</a>
+
+<a href="#blogs">Blogs</a>
+
+<a href="#contact">Contact</a>
+
+</div>
+
+<p style="margin-top:20px;opacity:.7;">
+© 2026 GYANU Educational & Information Portal.
+All Rights Reserved.
+</p>
+
+</footer>
+
+
+<button id="topBtn" onclick="goTop()">
+↑
+</button>
+
+
+<script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+    document
+    .getElementById("navMenu")
+    .classList
+    .toggle("active");
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark");
+
+}
+
+
+/* =========================
+   QUESTION SEARCH
+========================= */
+
+function filterPapers(){
+
+    const input =
+    document.getElementById("paperSearch")
+    .value
+    .toLowerCase();
+
+    const papers =
+    document.querySelectorAll(".paper-card");
+
+    papers.forEach(function(paper){
+
+        const text =
+        paper.innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+            paper.style.display="block";
+
+        }else{
+
+            paper.style.display="none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+function sendMessage(event){
+
+    event.preventDefault();
+
+    alert(
+        "Thank you! Your message form is ready. Email/Google Form connection will be added later."
+    );
+
+}
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+window.onscroll=function(){
+
+    const btn =
+    document.getElementById("topBtn");
+
+    if(
+        document.body.scrollTop > 400 ||
+        document.documentElement.scrollTop > 400
+    ){
+
+        btn.style.display="block";
+
+    }else{
+
+        btn.style.display="none";
+
+    }
+
+};
+
+
+function goTop(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
 
 </body>
 </html>
